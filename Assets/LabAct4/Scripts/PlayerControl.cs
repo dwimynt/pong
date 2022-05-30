@@ -87,6 +87,9 @@ public class PlayerControl : MonoBehaviour
         {
             Debug.Log("Player Collide with Ball ");
 
+            BallControl ball = collision.gameObject.GetComponent<BallControl>();
+            ball.SetPlayer(this);
+
             lastContactPoint = collision.GetContact(0);
         }
     }
@@ -98,6 +101,12 @@ public class PlayerControl : MonoBehaviour
     public ContactPoint2D LastContactPoint
     {
         get { return lastContactPoint; }
+    }
+
+     // Menaikkan skor sebanyak x poin
+    public void AddScore(int point)
+    {
+        score = score + point;
     }
 
 }

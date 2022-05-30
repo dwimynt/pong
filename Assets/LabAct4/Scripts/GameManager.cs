@@ -30,12 +30,36 @@ public class GameManager : MonoBehaviour
         ballRigidbody = ball.GetComponent<Rigidbody2D>();
         ballCollider = ball.GetComponent<CircleCollider2D>();
         
+        SpawnBoxes();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public GameObject ObjectToSpawn; // skrip
+    public int numOfBox;
+
+    private Color[] colors = {new Color (1, 0, 0, 1), new Color (0, 0, 1, 1), new Color (1, 0.92f, 0.016f, 1)};
+    private int[] points = {10, 8, 5};
+
+    void SpawnBoxes()
+    {
+        for(int i=0; i< numOfBox; i++){
+            // Random position within this transform
+            Vector3 rndPosWithin;
+            rndPosWithin = new Vector3(Random.Range(-15f, 15f), Random.Range(-5f, 5f), Random.Range(-1f, 1f));
+            //rndPosWithin = transform.TransformPoint(rndPosWithin * .5f);
+            rndPosWithin = transform.TransformPoint(rndPosWithin * .9f);
+            GameObject box = Instantiate(ObjectToSpawn, rndPosWithin, transform.rotation); 
+            SpriteRenderer sprite = box.GetComponent<SpriteRenderer>();
+            int rand = Random.Range(0, 3);
+            sprite.color = colors[rand]; 
+            BoxControl boxControl = box.GetComponent<BoxControl>();
+            boxControl.point = points[rand];
+        }
     }
 
     // Untuk menampilkan GUI

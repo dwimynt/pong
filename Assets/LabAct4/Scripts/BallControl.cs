@@ -84,4 +84,16 @@ public class BallControl : MonoBehaviour
     {
         get { return trajectoryOrigin; }
     }
+
+    public void AddPlayerScore(int point)
+    {
+        player.AddScore(point);
+    }
+    public void SetPlayer(PlayerControl pl)
+    {
+        player = pl;
+    }
+    // PlayerControl skrip
+    public PlayerControl player;
+
 }
