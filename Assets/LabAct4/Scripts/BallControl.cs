@@ -95,5 +95,5 @@ public class BallControl : MonoBehaviour
     }
     // PlayerControl skrip
     public PlayerControl player;
-
+    //ini perubahan
 }
